@@ -1,7 +1,9 @@
 import { cycleBorderColor } from "./utils.js";
 
+// Set up the story modal with input fields and event listeners
 export function setupStoryModal(content) {
-	content.innerHTML = `
+    // Set the inner HTML of the content element to the modal structure
+    content.innerHTML = `
         <div class="container" id="storyContainer">
             <header class="my-4">
                 <h1 class="text-center">Mad Lib Quest</h1>
@@ -44,20 +46,24 @@ export function setupStoryModal(content) {
         </div>
     `;
 
-	document.getElementById("generateStory").addEventListener("click", () => {
-		const heroName = document.getElementById("heroName").value || "Hero";
-		const weapon = document.getElementById("weapon").value || "sword";
-		const enemy = document.getElementById("enemy").value || "dragon";
-		const place = document.getElementById("place").value || "castle";
-		const treasure = document.getElementById("treasure").value || "gold";
-		const sidekick =
-			document.getElementById("sidekick").value || "sidekick";
+    // Event listener to the "Start Quest" button
+    document.getElementById("generateStory").addEventListener("click", () => {
+        // Get values from input fields or set default values
+        const heroName = document.getElementById("heroName").value || "Hero";
+        const weapon = document.getElementById("weapon").value || "sword";
+        const enemy = document.getElementById("enemy").value || "dragon";
+        const place = document.getElementById("place").value || "castle";
+        const treasure = document.getElementById("treasure").value || "gold";
+        const sidekick = document.getElementById("sidekick").value || "sidekick";
 
-		const story = `In the land of ${place}, there was a brave hero named ${heroName}. Armed with a ${weapon}, and accompanied by their loyal sidekick ${sidekick}, ${heroName} set out on a quest to defeat the evil ${enemy} and claim the ${treasure}. After a fierce battle, ${heroName} and ${sidekick} emerged victorious and returned home as legends.`;
+        // Create the story using the input values
+        const story = `In the land of ${place}, there was a brave hero named ${heroName}. Armed with a ${weapon}, and accompanied by their loyal sidekick ${sidekick}, ${heroName} set out on a quest to defeat the evil ${enemy} and claim the ${treasure}. After a fierce battle, ${heroName} and ${sidekick} emerged victorious and returned home as legends.`;
 
-		document.getElementById("modalStoryContent").innerHTML = story;
-		new bootstrap.Modal(document.getElementById("storyModal")).show();
-	});
+        // Set the story text in the modal and show the modal
+        document.getElementById("modalStoryContent").innerHTML = story;
+        new bootstrap.Modal(document.getElementById("storyModal")).show();
+    });
 
-	cycleBorderColor(document.getElementById("storyContainer"));
+    // Cycle the border color of the story container
+    cycleBorderColor(document.getElementById("storyContainer"));
 }
